@@ -1,0 +1,145 @@
+{
+  "da4003e06ec0a8ecbd26282543285458f38b3e4004da535a771ea2bd0f28177d": {
+    "deviceId": "da4003e06ec0a8ecbd26282543285458f38b3e4004da535a771ea2bd0f28177d",
+    "publicKey": "3PEbmMY7VTrSuOb1nb0ldmL58NqN3qjItTbMScSaenM",
+    "platform": "win32",
+    "clientId": "gateway-client",
+    "clientMode": "backend",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing",
+      "operator.read",
+      "operator.write"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "6orUfZED6d_VxZhTsJEB_qCT4CWI2uhaM6ILfecdce0",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1771686130086
+      }
+    },
+    "createdAtMs": 1771686130086,
+    "approvedAtMs": 1771686130086
+  },
+  "f8dacf7f29e365551bef25296661ae02d780a1fc854b977f46d63d4c74558c4a": {
+    "deviceId": "f8dacf7f29e365551bef25296661ae02d780a1fc854b977f46d63d4c74558c4a",
+    "publicKey": "4Wu-kYF6Yzm6GNDz5M82HbmDxrW0F2awSYzY5ik-kNE",
+    "platform": "Win32",
+    "clientId": "openclaw-control-ui",
+    "clientMode": "webchat",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing",
+      "operator.read",
+      "operator.write"
+    ],
+    "approvedScopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "uTXQTdCu8Db2I-mx8RCFEjYqVWohRN4TFMUnXOb6B2o",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1772963253842,
+        "lastUsedAtMs": 1774783783494
+      }
+    },
+    "createdAtMs": 1772963253842,
+    "approvedAtMs": 1772963253842
+  },
+  "3b7c1cc6102aa14261810141e72c089b2dfe5f9216794406c0ba495304b9ba51": {
+    "deviceId": "3b7c1cc6102aa14261810141e72c089b2dfe5f9216794406c0ba495304b9ba51",
+    "publicKey": "H5TtnKbfTO0Md8AHJYymNvWH__u4C5MfRGUq9QnvHeA",
+    "platform": "Win32",
+    "clientId": "openclaw-control-ui",
+    "clientMode": "webchat",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing",
+      "operator.read",
+      "operator.write"
+    ],
+    "approvedScopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "syoslZ1aIgq0adsZtvvVWNHpxSZrWdLUS0-D4XV2uyc",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1772963326911,
+        "lastUsedAtMs": 1774884601444
+      }
+    },
+    "createdAtMs": 1772963326911,
+    "approvedAtMs": 1772963326911
+  },
+  "8f98f0cf274df7611a407f89feacdea547e61dc00b6365eb669089e4c67e6de9": {
+    "deviceId": "8f98f0cf274df7611a407f89feacdea547e61dc00b6365eb669089e4c67e6de9",
+    "publicKey": "4sGY9YPtitPsIwKvxX9kicRXY-pboRO_qAykAlzgWj0",
+    "platform": "Win32",
+    "clientId": "openclaw-control-ui",
+    "clientMode": "webchat",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "approvedScopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "9wc6dTj651798Lf5yxfCkXAtE7_M6MlwqOql5WdOo8s",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1773503735356
+      }
+    },
+    "createdAtMs": 1773503735356,
+    "approvedAtMs": 1773503735356
+  }
+}

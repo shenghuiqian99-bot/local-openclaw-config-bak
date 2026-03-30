@@ -1,0 +1,7 @@
+{
+    "consecutiveGatewayFailures":  0,
+    "lastGatewayFailureAt":  "2026-03-30T14:37:01.1945817+00:00",
+    "lastHealthyAt":  "2026-03-30T15:32:01.3357447+00:00",
+    "lastRepairAt":  "2026-03-30T14:44:34.7832073+00:00",
+    "lastRepairReason":  "gateway rpc probe not ok; gateway loopback listener missing; feishu probe not healthy"
+}

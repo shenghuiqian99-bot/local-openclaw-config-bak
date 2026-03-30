@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "536439f5-e069-4545-9359-79bfef49dff7",
+      "name": "healthcheck:security-audit",
+      "description": "每周一上午9点执行深度安全审计",
+      "enabled": true,
+      "createdAtMs": 1772961176247,
+      "updatedAtMs": 1774832729795,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "执行深度安全审计并报告结果"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1775437200000,
+        "lastRunAtMs": 1774832400014,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 329781,
+        "lastDelivered": true,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "e97e4888-2757-46b8-950b-6df36a9a46a9",
+      "name": "healthcheck:update-status",
+      "description": "每天上午9点检查 OpenClaw 更新",
+      "enabled": true,
+      "createdAtMs": 1772961179717,
+      "updatedAtMs": 1774832759273,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * *"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "检查 OpenClaw 更新状态并报告"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1774918800000,
+        "lastRunAtMs": 1774832729795,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 29478,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
+      }
+    },
+    {
+      "id": "5ed7f72a-5f29-489c-94d3-a425d44bcf94",
+      "agentId": "research",
+      "name": "digest:daily-tech-news",
+      "description": "每日上午9点30分推送科技新闻简报",
+      "enabled": true,
+      "createdAtMs": 1774711591401,
+      "updatedAtMs": 1774834373635,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 9 * * *",
+        "tz": "Asia/Shanghai",
+        "staggerMs": 0
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "请生成今日科技新闻简报并直接输出适合飞书阅读的中文摘要版。要求：1. 只保留过去24小时内最重要的5到8条科技动态。2. 重点关注 AI、Agent、OpenClaw、模型发布、开发工具、创业与产品趋势。3. 每条包含标题、1到2句摘要、来源名称、原始链接、以及为什么值得关注。4. 最后补充3条今天最值得跟进的观察。5. 如果高质量信息不足，明确说明并不要凑数。6. 避免营销口吻，优先可信来源。",
+        "model": "minimax/MiniMax-M2.7",
+        "thinking": "medium"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "feishu",
+        "to": "user:ou_6e963c36fb3ca0226b8d0236471d5169",
+        "accountId": "default"
+      },
+      "state": {
+        "nextRunAtMs": 1774920600000,
+        "lastRunAtMs": 1774834200019,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 173616,
+        "lastDeliveryStatus": "delivered",
+        "consecutiveErrors": 0,
+        "lastDelivered": true
+      }
+    }
+  ]
+}

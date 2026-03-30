@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "profiles": {
+    "moonshot:default": {
+      "type": "api_key",
+      "provider": "moonshot",
+      "keyRef": {
+        "source": "env",
+        "provider": "default",
+        "id": "OPENCLAW_MAIN_MOONSHOT_API_KEY"
+      }
+    },
+    "dashscope:default": {
+      "type": "api_key",
+      "provider": "dashscope",
+      "keyRef": {
+        "source": "env",
+        "provider": "default",
+        "id": "OPENCLAW_MAIN_DASHSCOPE_API_KEY"
+      }
+    },
+    "openai-codex:default": {
+      "type": "oauth",
+      "provider": "openai-codex",
+      "access": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjE5MzQ0ZTY1LWJiYzktNDRkMS1hOWQwLWY5NTdiMDc5YmQwZSIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS92MSJdLCJjbGllbnRfaWQiOiJhcHBfRU1vYW1FRVo3M2YwQ2tYYVhwN2hyYW5uIiwiZXhwIjoxNzc1NTM4MzgzLCJodHRwczovL2FwaS5vcGVuYWkuY29tL2F1dGgiOnsiY2hhdGdwdF9hY2NvdW50X2lkIjoiZmU1NGEzNTgtMzA5Yi00MTJmLWFjNjktNTkxNjI1MTc5YTY2IiwiY2hhdGdwdF9hY2NvdW50X3VzZXJfaWQiOiJ1c2VyLXdkNUZOVWlCNGxubVFFSHNGV2FTM24wdl9fZmU1NGEzNTgtMzA5Yi00MTJmLWFjNjktNTkxNjI1MTc5YTY2IiwiY2hhdGdwdF9jb21wdXRlX3Jlc2lkZW5jeSI6Im5vX2NvbnN0cmFpbnQiLCJjaGF0Z3B0X3BsYW5fdHlwZSI6ImZyZWUiLCJjaGF0Z3B0X3VzZXJfaWQiOiJ1c2VyLXdkNUZOVWlCNGxubVFFSHNGV2FTM24wdiIsImxvY2FsaG9zdCI6dHJ1ZSwidXNlcl9pZCI6InVzZXItd2Q1Rk5VaUI0bG5tUUVIc0ZXYVMzbjB2In0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vcHJvZmlsZSI6eyJlbWFpbCI6InNoZW5naHVpcWlhbjk5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNzc0Njc0MzgyLCJpc3MiOiJodHRwczovL2F1dGgub3BlbmFpLmNvbSIsImp0aSI6ImY0NTdhOGQ5LTg2NTgtNDU1MC1hNmMzLTFiNDQ3NTMzYWM3NiIsIm5iZiI6MTc3NDY3NDM4MiwicHdkX2F1dGhfdGltZSI6MTc3NDY3NDM4MDMyMiwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmVfYWNjZXNzIiwiYXBpLmNvbm5lY3RvcnMucmVhZCIsImFwaS5jb25uZWN0b3JzLmludm9rZSJdLCJzZXNzaW9uX2lkIjoiYXV0aHNlc3NfMFp6aU9oOFNKY1llanVpdnF2NWptVU85Iiwic2wiOnRydWUsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3Nzk3MjQ1MTUxNjE3MjMzOTI1In0.hi2TYYeM3XvzscpqDGQ-aWT2BzuOLoF4XIa7W5G1QWZoHxRRXrkuudQQJfXLGDHt3UVmAmqsWuQG7GFdOrHJ2oTLf4jlAuSjPthwMMte3JjoyDJ8LmsKUdrbzk3ZZyJSFElA7ZEj4ecSZ1zZwGejZy-fhwhzcBzJ37BsGLgpJw3h7tDpjygzShWDQ2Xg2VjkXaD99FYmcuktH5cP44-9iJdk2GflU3PR_AmJssh-hLb9DrJ7lLMHAvygYtR50mhFbMxaqAwcZlN2S1u9gcItdF4wytc1Fng5RtU6H1ruLRgnQeUjJqWQ_Fwr_Yf1Y0tPi1kCKdUkGoLuEwyDbHah5Yq2QbzlHF5mVXMWhIEsQnogniQd2sUuR0upXJYj0MUOWAdpvwElNjMsDrrIWlOXq0_WuOS8Sv4xMUSkqbY2m1e20FhQhtoUh90oj849AjmhEbEM8JlAXmqr6kAx_0x-8zDAYZxhKREH3qT1cG5OixOXXp5vLlQU0wXjwaCAnlP9hIlwiwZT_WBqP1gc23m3OQ-JTsZPpXhihL1nSPIWYjrDNEBQC9EUeSzTJr9XwmfSh9hZIT8m8YdDrieJOjU8aRaFyGJe1iHqKRNbyKhJjlA9wjq1SO1bOtzJ40hrBaq7On3v_MqNisA20rj1FdISahMdVzAvtQsN3A7z8_Z4hzs",
+      "refresh": "rt_yrNStjkv-B5Aa6SR45O7ptpnov8jin-ZboSBD2lHZ8E.GudUJXyXa4pJJuVujHUn7MfyQ-t79IsdVSoCW7lXRHs",
+      "expires": 1775538383000,
+      "accountId": "fe54a358-309b-412f-ac69-591625179a66"
+    }
+  },
+  "lastGood": {
+    "moonshot": "moonshot:default"
+  },
+  "usageStats": {
+    "moonshot:default": {
+      "errorCount": 0,
+      "lastUsed": 1774773579711
+    }
+  }
+}

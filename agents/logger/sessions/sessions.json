@@ -1,0 +1,875 @@
+{
+  "agent:logger:main": {
+    "sessionId": "eaadecdd-5f34-4aed-8ebb-fc3a5dbf8faf",
+    "updatedAt": 1774866414202,
+    "systemSent": true,
+    "abortedLastRun": false,
+    "chatType": "direct",
+    "deliveryContext": {
+      "to": "heartbeat"
+    },
+    "lastTo": "heartbeat",
+    "origin": {
+      "label": "heartbeat",
+      "provider": "heartbeat",
+      "from": "heartbeat",
+      "to": "heartbeat"
+    },
+    "sessionFile": "C:\\Users\\RickQ\\.openclaw\\agents\\logger\\sessions\\eaadecdd-5f34-4aed-8ebb-fc3a5dbf8faf.jsonl",
+    "compactionCount": 0,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>feishu-chat-file-delivery</name>\n    <description>Use when the user wants a PDF, Word file, Excel, PowerPoint, or other local document sent directly into the current Feishu chat or another Feishu conversation as a file message. Prefer this skill for any request phrased as sending a file to chat, the current conversation, or the chat box. Keywords: 发到飞书聊天框, 发到当前会话, send file to current feishu chat, send pdf to chat, direct file message.</description>\n    <location>~/.openclaw\\workspace\\skills\\feishu-chat-file-delivery\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-file-bridge</name>\n    <description>Use when the user wants to send or receive PDF/Word/Excel/PPT files through a Feishu chat. Covers direct chat file sending, receiving attachments from Feishu, and fallback to Feishu Doc/Wiki when direct delivery is unsafe. Keywords: 飞书收发文件, Feishu file bridge, 收到 PDF, 发 PDF 到聊天框.</description>\n    <location>~/.openclaw\\workspace\\skills\\feishu-file-bridge\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>smtp-mail</name>\n    <description>Use when you need to send email through SMTP, including attachments, HTML or plain text content, and outbound notifications from OpenClaw. Keywords: send email, smtp, mail, 邮件发送, 发邮件.</description>\n    <location>E:\\projects\\clawbot\\skills\\smtp-mail\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-doc</name>\n    <description>Feishu document read/write operations. Activate when user mentions Feishu docs, cloud docs, or docx links.\n</description>\n    <location>E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-doc\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-drive</name>\n    <description>Feishu cloud storage file management. Activate when user mentions cloud space, folders, drive.\n</description>\n    <location>E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-drive\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-perm</name>\n    <description>Feishu permission management for documents and files. Activate when user mentions sharing, permissions, collaborators.\n</description>\n    <location>E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-perm\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-wiki</name>\n    <description>Feishu knowledge base navigation. Activate when user mentions knowledge base, wiki, or wiki links.\n</description>\n    <location>E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-wiki\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>prose</name>\n    <description>OpenProse VM skill pack. Activate on any `prose` command, .prose files, or OpenProse mentions; orchestrates multi-agent workflows.</description>\n    <location>E:\\projects\\openclaw-source\\extensions\\open-prose\\skills\\prose\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>coding-agent</name>\n    <description>Delegate coding tasks to Codex, Claude Code, or Pi agents via background process. Use when: (1) building/creating new features or apps, (2) reviewing PRs (spawn in temp dir), (3) refactoring large codebases, (4) iterative coding that needs file exploration. NOT for: simple one-liner fixes (just edit), reading code (use read tool), thread-bound ACP harness requests in chat (for example spawn/run Codex or Claude Code in a Discord thread; use sessions_spawn with runtime:&quot;acp&quot;), or any work in ~/clawd workspace (never spawn agents here). Claude Code: use --print --permission-mode bypassPermissions (no PTY). Codex/Pi/OpenCode: pty:true required.</description>\n    <location>E:\\projects\\openclaw-source\\skills\\coding-agent\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>gemini</name>\n    <description>Gemini CLI for one-shot Q&amp;A, summaries, and generation.</description>\n    <location>E:\\projects\\openclaw-source\\skills\\gemini\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>gh-issues</name>\n    <description>Fetch GitHub issues, spawn sub-agents to implement fixes and open PRs, then monitor and address PR review comments. Usage: /gh-issues [owner/repo] [--label bug] [--limit 5] [--milestone v1.0] [--assignee @me] [--fork user/repo] [--watch] [--interval 5] [--reviews-only] [--cron] [--dry-run] [--model glm-5] [--notify-channel -1002381931352]</description>\n    <location>E:\\projects\\openclaw-source\\skills\\gh-issues\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>github</name>\n    <description>Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.</description>\n    <location>~/.openclaw\\workspace\\skills\\github\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>gog</name>\n    <description>Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.</description>\n    <location>~/.openclaw\\workspace\\skills\\gog\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>E:\\projects\\openclaw-source\\skills\\healthcheck\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>mcporter</name>\n    <description>Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.</description>\n    <location>E:\\projects\\openclaw-source\\skills\\mcporter\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>nano-pdf</name>\n    <description>Edit PDFs with natural-language instructions using the nano-pdf CLI.</description>\n    <location>~/.openclaw\\workspace\\skills\\nano-pdf\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>node-connect</name>\n    <description>Diagnose OpenClaw node connection and pairing failures for Android, iOS, and macOS companion apps. Use when QR/setup code/manual connect fails, local Wi-Fi works but VPS/tailnet does not, or errors mention pairing required, unauthorized, bootstrap token invalid or expired, gateway.bind, gateway.remote.url, Tailscale, or plugins.entries.device-pair.config.publicUrl.</description>\n    <location>E:\\projects\\openclaw-source\\skills\\node-connect\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>notion</name>\n    <description>Notion API for creating and managing pages, databases, and blocks.</description>\n    <location>~/.openclaw\\workspace\\skills\\notion\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>obsidian</name>\n    <description>Work with Obsidian vaults (plain Markdown notes) and automate via obsidian-cli.</description>\n    <location>~/.openclaw\\workspace\\skills\\obsidian\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper</name>\n    <description>Local speech-to-text with the Whisper CLI (no API key).</description>\n    <location>~/.openclaw\\workspace\\skills\\openai-whisper\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill&apos;s description for better triggering accuracy.</description>\n    <location>~/.agents\\skills\\skill-creator\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>summarize</name>\n    <description>Summarize URLs or files with the summarize CLI (web, PDFs, images, audio, YouTube).</description>\n    <location>~/.openclaw\\workspace\\skills\\summarize\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>~/.openclaw\\workspace\\skills\\weather\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>ai-automation-workflows</name>\n    <description>Build automated AI workflows combining multiple models and services. Patterns: batch processing, scheduled tasks, event-driven pipelines, agent loops. Tools: inference.sh CLI, bash scripting, Python SDK, webhook integration. Use for: content automation, data processing, monitoring, scheduled generation. Triggers: ai automation, workflow automation, batch processing, ai pipeline, automated content, scheduled ai, ai cron, ai batch job, automated generation, ai workflow, content at scale, automation script, ai orchestration</description>\n    <location>~/.agents\\skills\\ai-automation-workflows\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>find-skills</name>\n    <description>Helps users discover and install agent skills when they ask questions like &quot;how do I do X&quot;, &quot;find a skill for X&quot;, &quot;is there a skill that can...&quot;, or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.</description>\n    <location>~/.agents\\skills\\find-skills\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>self-improving-agent</name>\n    <description>A universal self-improving agent that learns from ALL skill experiences. Uses multi-memory architecture (semantic + episodic + working) to continuously evolve the codebase. Auto-triggers on skill completion/error with hooks-based self-correction.</description>\n    <location>~/.agents\\skills\\self-improving-agent\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-vetter</name>\n    <description>Security-first vetting for OpenClaw skills. Use before installing any skill from ClawHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.</description>\n    <location>~/.agents\\skills\\skill-vetter\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>code-reviewer</name>\n    <description>自动化代码审查流程，提供专业的代码质量分析。当用户提出以下类型请求时触发：\n1. 代码审查请求：&quot;审查这段代码&quot;、&quot;code review&quot;、&quot;检查代码&quot;\n2. 代码质量询问：&quot;这段代码有问题吗&quot;、&quot;代码质量如何&quot;、&quot;优化建议&quot;\n3. 安全审查：&quot;检查安全漏洞&quot;、&quot;这段代码安全吗&quot;\n4. 重构评估：&quot;重构建议&quot;、&quot;如何改进这段代码&quot;\n5. Bug查找：&quot;找bug&quot;、&quot;这段代码有bug吗&quot;\n\n输入形式可以是：代码片段（markdown代码块）、文件路径、PR链接。\n\n不触发的情况：要求生成新代码、解释概念、询问语法用法。\n\n触发关键词：代码审查、code review、检查代码、评审代码、代码质量、重构建议、bug检查、review this code、找bug、安全漏洞、性能优化。\n</description>\n    <location>~/.openclaw\\workspace\\skills\\code-reviewer\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>context-compressor</name>\n    <description>智能压缩长对话历史和上下文，保留关键信息的同时减少token消耗。当用户提出以下类型请求时触发：\n1. 总结请求：&quot;总结一下&quot;、&quot;总结对话&quot;、&quot;提取要点&quot;\n2. 压缩请求：&quot;压缩上下文&quot;、&quot;对话太长了&quot;、&quot;token不够了&quot;\n3. 回顾请求：&quot;回顾之前的讨论&quot;、&quot;我们刚才说了什么&quot;\n4. 话题切换：&quot;换个话题&quot;、&quot;保存当前讨论&quot;\n5. 信息提取：&quot;关键信息&quot;、&quot;重要结论&quot;、&quot;行动项&quot;\n\n自动触发条件：对话超过30轮、用户说&quot;太长不看&quot;。\n\n不触发的情况：简单的&quot;你好&quot;、单个问题询问。\n\n触发关键词：总结对话、压缩上下文、太长不看、关键信息、回顾之前、整理讨论、提取要点、总结一下、保存讨论、话题存档。\n</description>\n    <location>~/.openclaw\\workspace\\skills\\context-compressor\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>knowledge-retrieval</name>\n    <description>按需加载和检索知识库内容，提供智能知识管理。当用户提出以下类型请求时触发：\n1. 文档查询：&quot;查找文档&quot;、&quot;有文档吗&quot;、&quot;最佳实践&quot;\n2. 知识搜索：&quot;搜索知识库&quot;、&quot;查一下&quot;、&quot;怎么解决&quot;\n3. 参考资料：&quot;参考资料&quot;、&quot;相关文档&quot;、&quot;给我链接&quot;\n4. 历史检索：&quot;查一下我之前&quot;、&quot;之前提到的&quot;\n5. 技术问题：&quot;怎么处理...&quot;、&quot;...的解决方案&quot;\n\n优先使用 memory_search 工具检索本地知识库，不足时建议 web_search。\n\n不触发的情况：要求生成内容、编写代码、解释简单概念。\n\n触发关键词：知识检索、查找文档、搜索知识库、最佳实践、参考资料、怎么解决、有文档吗、查一下、之前提到的、给我链接、如何处理。\n</description>\n    <location>~/.openclaw\\workspace\\skills\\knowledge-retrieval\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>task-planner</name>\n    <description>自动将复杂任务分解为可执行的子任务。当用户提出以下类型请求时触发：\n1. 项目规划类：&quot;帮我规划...项目&quot;、&quot;制定...计划&quot;、&quot;如何完成...&quot;\n2. 任务分解类：&quot;分解...任务&quot;、&quot;拆解...工作&quot;、&quot;分步骤执行...&quot;\n3. 学习规划类：&quot;制定学习计划&quot;、&quot;如何学会...&quot;、&quot;...学习路径&quot;\n4. 工作流设计类：&quot;设计...流程&quot;、&quot;建立...工作流&quot;、&quot;CI/CD流程&quot;\n5. 复杂问题求解：涉及多个步骤、需要分阶段执行的任务\n\n不触发的情况：简单问答（5分钟内可完成）、代码解释、概念询问。\n\n触发关键词：分解任务、制定计划、如何完成、步骤规划、项目拆解、任务拆分、执行计划、帮我规划、学习计划、工作流程、分阶段、里程碑。\n</description>\n    <location>~/.openclaw\\workspace\\skills\\task-planner\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>team-collaboration</name>\n    <description>多智能体协作模板，协调多个AI代理共同完成复杂任务。当用户提出以下类型请求时触发：\n1. 多角色协作：&quot;多代理协作&quot;、&quot;团队模式&quot;、&quot;分工合作&quot;\n2. 专家会诊：&quot;专家分析&quot;、&quot;多角度评估&quot;、&quot;专家会诊&quot;\n3. 复杂项目：&quot;复杂任务&quot;、&quot;需要多个助手&quot;、&quot;并行处理&quot;\n4. 多维度分析：&quot;全面分析&quot;、&quot;多维度评估&quot;、&quot;各方面分析&quot;\n5. 审查流水线：&quot;流水线审查&quot;、&quot;多阶段审查&quot;\n\n使用 sessions_spawn 启动子代理，使用 subagents 管理协调。\n\n不触发的情况：简单问答、单一代码编写、概念解释。\n\n触发关键词：多代理协作、团队模式、并行处理、分工合作、多角色、复杂任务、需要多个助手、专家会诊、多角度分析、协作模式、团队工作。\n</description>\n    <location>~/.openclaw\\workspace\\skills\\team-collaboration\\SKILL.md</location>\n  </skill>\n  <skill>\n    <name>vscode-automation</name>\n    <description>Automate VS Code operations including opening files, interacting with Copilot Chat, and controlling the IDE through Python automation. Use this skill when the user wants to automate VS Code tasks, control the IDE programmatically, interact with Copilot Chat automatically, or perform automated coding workflows.</description>\n    <location>~/.openclaw\\workspace\\skills\\vscode-automation\\SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "feishu-chat-file-delivery",
+          "requiredEnv": []
+        },
+        {
+          "name": "feishu-file-bridge",
+          "requiredEnv": []
+        },
+        {
+          "name": "smtp-mail",
+          "requiredEnv": [
+            "OPENCLAW_SMTP_HOST",
+            "OPENCLAW_SMTP_FROM"
+          ]
+        },
+        {
+          "name": "feishu-doc"
+        },
+        {
+          "name": "feishu-drive"
+        },
+        {
+          "name": "feishu-perm"
+        },
+        {
+          "name": "feishu-wiki"
+        },
+        {
+          "name": "prose"
+        },
+        {
+          "name": "coding-agent",
+          "requiredEnv": []
+        },
+        {
+          "name": "gemini",
+          "requiredEnv": []
+        },
+        {
+          "name": "gh-issues",
+          "primaryEnv": "GH_TOKEN",
+          "requiredEnv": []
+        },
+        {
+          "name": "github"
+        },
+        {
+          "name": "gog"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "mcporter",
+          "requiredEnv": []
+        },
+        {
+          "name": "nano-pdf"
+        },
+        {
+          "name": "node-connect"
+        },
+        {
+          "name": "notion"
+        },
+        {
+          "name": "obsidian"
+        },
+        {
+          "name": "openai-whisper"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "summarize"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "ai-automation-workflows"
+        },
+        {
+          "name": "find-skills"
+        },
+        {
+          "name": "self-improving-agent"
+        },
+        {
+          "name": "skill-vetter"
+        },
+        {
+          "name": "code-reviewer"
+        },
+        {
+          "name": "context-compressor"
+        },
+        {
+          "name": "knowledge-retrieval"
+        },
+        {
+          "name": "task-planner"
+        },
+        {
+          "name": "team-collaboration"
+        },
+        {
+          "name": "vscode-automation"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "feishu-chat-file-delivery",
+          "description": "Use when the user wants a PDF, Word file, Excel, PowerPoint, or other local document sent directly into the current Feishu chat or another Feishu conversation as a file message. Prefer this skill for any request phrased as sending a file to chat, the current conversation, or the chat box. Keywords: 发到飞书聊天框, 发到当前会话, send file to current feishu chat, send pdf to chat, direct file message.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-chat-file-delivery\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-chat-file-delivery",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-chat-file-delivery\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-chat-file-delivery"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-file-bridge",
+          "description": "Use when the user wants to send or receive PDF/Word/Excel/PPT files through a Feishu chat. Covers direct chat file sending, receiving attachments from Feishu, and fallback to Feishu Doc/Wiki when direct delivery is unsafe. Keywords: 飞书收发文件, Feishu file bridge, 收到 PDF, 发 PDF 到聊天框.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-file-bridge\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-file-bridge",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-file-bridge\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\feishu-file-bridge"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "smtp-mail",
+          "description": "Use when you need to send email through SMTP, including attachments, HTML or plain text content, and outbound notifications from OpenClaw. Keywords: send email, smtp, mail, 邮件发送, 发邮件.",
+          "filePath": "E:\\projects\\clawbot\\skills\\smtp-mail\\SKILL.md",
+          "baseDir": "E:\\projects\\clawbot\\skills\\smtp-mail",
+          "sourceInfo": {
+            "path": "E:\\projects\\clawbot\\skills\\smtp-mail\\SKILL.md",
+            "source": "openclaw-extra",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\clawbot\\skills\\smtp-mail"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-doc",
+          "description": "Feishu document read/write operations. Activate when user mentions Feishu docs, cloud docs, or docx links.\n",
+          "filePath": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-doc\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-doc",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-doc\\SKILL.md",
+            "source": "openclaw-extra",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-doc"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-drive",
+          "description": "Feishu cloud storage file management. Activate when user mentions cloud space, folders, drive.\n",
+          "filePath": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-drive\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-drive",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-drive\\SKILL.md",
+            "source": "openclaw-extra",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-drive"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-perm",
+          "description": "Feishu permission management for documents and files. Activate when user mentions sharing, permissions, collaborators.\n",
+          "filePath": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-perm\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-perm",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-perm\\SKILL.md",
+            "source": "openclaw-extra",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-perm"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-wiki",
+          "description": "Feishu knowledge base navigation. Activate when user mentions knowledge base, wiki, or wiki links.\n",
+          "filePath": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-wiki\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-wiki",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-wiki\\SKILL.md",
+            "source": "openclaw-extra",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\extensions\\feishu\\skills\\feishu-wiki"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "prose",
+          "description": "OpenProse VM skill pack. Activate on any `prose` command, .prose files, or OpenProse mentions; orchestrates multi-agent workflows.",
+          "filePath": "E:\\projects\\openclaw-source\\extensions\\open-prose\\skills\\prose\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\extensions\\open-prose\\skills\\prose",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\extensions\\open-prose\\skills\\prose\\SKILL.md",
+            "source": "openclaw-extra",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\extensions\\open-prose\\skills\\prose"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "coding-agent",
+          "description": "Delegate coding tasks to Codex, Claude Code, or Pi agents via background process. Use when: (1) building/creating new features or apps, (2) reviewing PRs (spawn in temp dir), (3) refactoring large codebases, (4) iterative coding that needs file exploration. NOT for: simple one-liner fixes (just edit), reading code (use read tool), thread-bound ACP harness requests in chat (for example spawn/run Codex or Claude Code in a Discord thread; use sessions_spawn with runtime:\"acp\"), or any work in ~/clawd workspace (never spawn agents here). Claude Code: use --print --permission-mode bypassPermissions (no PTY). Codex/Pi/OpenCode: pty:true required.",
+          "filePath": "E:\\projects\\openclaw-source\\skills\\coding-agent\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\skills\\coding-agent",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\skills\\coding-agent\\SKILL.md",
+            "source": "openclaw-bundled",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\skills\\coding-agent"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "gemini",
+          "description": "Gemini CLI for one-shot Q&A, summaries, and generation.",
+          "filePath": "E:\\projects\\openclaw-source\\skills\\gemini\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\skills\\gemini",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\skills\\gemini\\SKILL.md",
+            "source": "openclaw-bundled",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\skills\\gemini"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "gh-issues",
+          "description": "Fetch GitHub issues, spawn sub-agents to implement fixes and open PRs, then monitor and address PR review comments. Usage: /gh-issues [owner/repo] [--label bug] [--limit 5] [--milestone v1.0] [--assignee @me] [--fork user/repo] [--watch] [--interval 5] [--reviews-only] [--cron] [--dry-run] [--model glm-5] [--notify-channel -1002381931352]",
+          "filePath": "E:\\projects\\openclaw-source\\skills\\gh-issues\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\skills\\gh-issues",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\skills\\gh-issues\\SKILL.md",
+            "source": "openclaw-bundled",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\skills\\gh-issues"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "github",
+          "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\github\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\github",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\github\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\github"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "gog",
+          "description": "Google Workspace CLI for Gmail, Calendar, Drive, Contacts, Sheets, and Docs.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\gog\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\gog",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\gog\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\gog"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "E:\\projects\\openclaw-source\\skills\\healthcheck\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\skills\\healthcheck",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\skills\\healthcheck\\SKILL.md",
+            "source": "openclaw-bundled",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\skills\\healthcheck"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "mcporter",
+          "description": "Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation.",
+          "filePath": "E:\\projects\\openclaw-source\\skills\\mcporter\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\skills\\mcporter",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\skills\\mcporter\\SKILL.md",
+            "source": "openclaw-bundled",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\skills\\mcporter"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "nano-pdf",
+          "description": "Edit PDFs with natural-language instructions using the nano-pdf CLI.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\nano-pdf\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\nano-pdf",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\nano-pdf\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\nano-pdf"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "node-connect",
+          "description": "Diagnose OpenClaw node connection and pairing failures for Android, iOS, and macOS companion apps. Use when QR/setup code/manual connect fails, local Wi-Fi works but VPS/tailnet does not, or errors mention pairing required, unauthorized, bootstrap token invalid or expired, gateway.bind, gateway.remote.url, Tailscale, or plugins.entries.device-pair.config.publicUrl.",
+          "filePath": "E:\\projects\\openclaw-source\\skills\\node-connect\\SKILL.md",
+          "baseDir": "E:\\projects\\openclaw-source\\skills\\node-connect",
+          "sourceInfo": {
+            "path": "E:\\projects\\openclaw-source\\skills\\node-connect\\SKILL.md",
+            "source": "openclaw-bundled",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "E:\\projects\\openclaw-source\\skills\\node-connect"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "notion",
+          "description": "Notion API for creating and managing pages, databases, and blocks.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\notion\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\notion",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\notion\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\notion"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "obsidian",
+          "description": "Work with Obsidian vaults (plain Markdown notes) and automate via obsidian-cli.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\obsidian\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\obsidian",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\obsidian\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\obsidian"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper",
+          "description": "Local speech-to-text with the Whisper CLI (no API key).",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\openai-whisper\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\openai-whisper",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\openai-whisper\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\openai-whisper"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+          "filePath": "C:\\Users\\RickQ\\.agents\\skills\\skill-creator\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\skill-creator",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.agents\\skills\\skill-creator\\SKILL.md",
+            "source": "agents-skills-personal",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\skill-creator"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "summarize",
+          "description": "Summarize URLs or files with the summarize CLI (web, PDFs, images, audio, YouTube).",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\summarize\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\summarize",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\summarize\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\summarize"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\weather\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\weather",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\weather\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\weather"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "ai-automation-workflows",
+          "description": "Build automated AI workflows combining multiple models and services. Patterns: batch processing, scheduled tasks, event-driven pipelines, agent loops. Tools: inference.sh CLI, bash scripting, Python SDK, webhook integration. Use for: content automation, data processing, monitoring, scheduled generation. Triggers: ai automation, workflow automation, batch processing, ai pipeline, automated content, scheduled ai, ai cron, ai batch job, automated generation, ai workflow, content at scale, automation script, ai orchestration",
+          "filePath": "C:\\Users\\RickQ\\.agents\\skills\\ai-automation-workflows\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\ai-automation-workflows",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.agents\\skills\\ai-automation-workflows\\SKILL.md",
+            "source": "agents-skills-personal",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\ai-automation-workflows"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "find-skills",
+          "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.",
+          "filePath": "C:\\Users\\RickQ\\.agents\\skills\\find-skills\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\find-skills",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.agents\\skills\\find-skills\\SKILL.md",
+            "source": "agents-skills-personal",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\find-skills"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "self-improving-agent",
+          "description": "A universal self-improving agent that learns from ALL skill experiences. Uses multi-memory architecture (semantic + episodic + working) to continuously evolve the codebase. Auto-triggers on skill completion/error with hooks-based self-correction.",
+          "filePath": "C:\\Users\\RickQ\\.agents\\skills\\self-improving-agent\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\self-improving-agent",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.agents\\skills\\self-improving-agent\\SKILL.md",
+            "source": "agents-skills-personal",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\self-improving-agent"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-vetter",
+          "description": "Security-first vetting for OpenClaw skills. Use before installing any skill from ClawHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.",
+          "filePath": "C:\\Users\\RickQ\\.agents\\skills\\skill-vetter\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\skill-vetter",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.agents\\skills\\skill-vetter\\SKILL.md",
+            "source": "agents-skills-personal",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.agents\\skills\\skill-vetter"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "code-reviewer",
+          "description": "自动化代码审查流程，提供专业的代码质量分析。当用户提出以下类型请求时触发：\n1. 代码审查请求：\"审查这段代码\"、\"code review\"、\"检查代码\"\n2. 代码质量询问：\"这段代码有问题吗\"、\"代码质量如何\"、\"优化建议\"\n3. 安全审查：\"检查安全漏洞\"、\"这段代码安全吗\"\n4. 重构评估：\"重构建议\"、\"如何改进这段代码\"\n5. Bug查找：\"找bug\"、\"这段代码有bug吗\"\n\n输入形式可以是：代码片段（markdown代码块）、文件路径、PR链接。\n\n不触发的情况：要求生成新代码、解释概念、询问语法用法。\n\n触发关键词：代码审查、code review、检查代码、评审代码、代码质量、重构建议、bug检查、review this code、找bug、安全漏洞、性能优化。\n",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\code-reviewer\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\code-reviewer",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\code-reviewer\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\code-reviewer"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "context-compressor",
+          "description": "智能压缩长对话历史和上下文，保留关键信息的同时减少token消耗。当用户提出以下类型请求时触发：\n1. 总结请求：\"总结一下\"、\"总结对话\"、\"提取要点\"\n2. 压缩请求：\"压缩上下文\"、\"对话太长了\"、\"token不够了\"\n3. 回顾请求：\"回顾之前的讨论\"、\"我们刚才说了什么\"\n4. 话题切换：\"换个话题\"、\"保存当前讨论\"\n5. 信息提取：\"关键信息\"、\"重要结论\"、\"行动项\"\n\n自动触发条件：对话超过30轮、用户说\"太长不看\"。\n\n不触发的情况：简单的\"你好\"、单个问题询问。\n\n触发关键词：总结对话、压缩上下文、太长不看、关键信息、回顾之前、整理讨论、提取要点、总结一下、保存讨论、话题存档。\n",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\context-compressor\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\context-compressor",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\context-compressor\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\context-compressor"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "knowledge-retrieval",
+          "description": "按需加载和检索知识库内容，提供智能知识管理。当用户提出以下类型请求时触发：\n1. 文档查询：\"查找文档\"、\"有文档吗\"、\"最佳实践\"\n2. 知识搜索：\"搜索知识库\"、\"查一下\"、\"怎么解决\"\n3. 参考资料：\"参考资料\"、\"相关文档\"、\"给我链接\"\n4. 历史检索：\"查一下我之前\"、\"之前提到的\"\n5. 技术问题：\"怎么处理...\"、\"...的解决方案\"\n\n优先使用 memory_search 工具检索本地知识库，不足时建议 web_search。\n\n不触发的情况：要求生成内容、编写代码、解释简单概念。\n\n触发关键词：知识检索、查找文档、搜索知识库、最佳实践、参考资料、怎么解决、有文档吗、查一下、之前提到的、给我链接、如何处理。\n",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\knowledge-retrieval\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\knowledge-retrieval",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\knowledge-retrieval\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\knowledge-retrieval"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "task-planner",
+          "description": "自动将复杂任务分解为可执行的子任务。当用户提出以下类型请求时触发：\n1. 项目规划类：\"帮我规划...项目\"、\"制定...计划\"、\"如何完成...\"\n2. 任务分解类：\"分解...任务\"、\"拆解...工作\"、\"分步骤执行...\"\n3. 学习规划类：\"制定学习计划\"、\"如何学会...\"、\"...学习路径\"\n4. 工作流设计类：\"设计...流程\"、\"建立...工作流\"、\"CI/CD流程\"\n5. 复杂问题求解：涉及多个步骤、需要分阶段执行的任务\n\n不触发的情况：简单问答（5分钟内可完成）、代码解释、概念询问。\n\n触发关键词：分解任务、制定计划、如何完成、步骤规划、项目拆解、任务拆分、执行计划、帮我规划、学习计划、工作流程、分阶段、里程碑。\n",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\task-planner\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\task-planner",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\task-planner\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\task-planner"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "team-collaboration",
+          "description": "多智能体协作模板，协调多个AI代理共同完成复杂任务。当用户提出以下类型请求时触发：\n1. 多角色协作：\"多代理协作\"、\"团队模式\"、\"分工合作\"\n2. 专家会诊：\"专家分析\"、\"多角度评估\"、\"专家会诊\"\n3. 复杂项目：\"复杂任务\"、\"需要多个助手\"、\"并行处理\"\n4. 多维度分析：\"全面分析\"、\"多维度评估\"、\"各方面分析\"\n5. 审查流水线：\"流水线审查\"、\"多阶段审查\"\n\n使用 sessions_spawn 启动子代理，使用 subagents 管理协调。\n\n不触发的情况：简单问答、单一代码编写、概念解释。\n\n触发关键词：多代理协作、团队模式、并行处理、分工合作、多角色、复杂任务、需要多个助手、专家会诊、多角度分析、协作模式、团队工作。\n",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\team-collaboration\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\team-collaboration",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\team-collaboration\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\team-collaboration"
+          },
+          "disableModelInvocation": false
+        },
+        {
+          "name": "vscode-automation",
+          "description": "Automate VS Code operations including opening files, interacting with Copilot Chat, and controlling the IDE through Python automation. Use this skill when the user wants to automate VS Code tasks, control the IDE programmatically, interact with Copilot Chat automatically, or perform automated coding workflows.",
+          "filePath": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\vscode-automation\\SKILL.md",
+          "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\vscode-automation",
+          "sourceInfo": {
+            "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\vscode-automation\\SKILL.md",
+            "source": "openclaw-workspace",
+            "scope": "temporary",
+            "origin": "top-level",
+            "baseDir": "C:\\Users\\RickQ\\.openclaw\\workspace\\skills\\vscode-automation"
+          },
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "status": "done",
+    "startedAt": 1774866407731,
+    "modelProvider": "minimax",
+    "model": "MiniMax-M2.7",
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1774866407652,
+      "sessionId": "eaadecdd-5f34-4aed-8ebb-fc3a5dbf8faf",
+      "sessionKey": "agent:logger:main",
+      "provider": "minimax",
+      "model": "MiniMax-M2.7",
+      "workspaceDir": "C:\\Users\\RickQ\\.openclaw\\workspace",
+      "bootstrapMaxChars": 20000,
+      "bootstrapTotalMaxChars": 150000,
+      "bootstrapTruncation": {
+        "warningMode": "once",
+        "warningShown": false,
+        "promptWarningSignature": "{\"bootstrapMaxChars\":20000,\"bootstrapTotalMaxChars\":150000,\"files\":[{\"path\":\"C:\\\\Users\\\\RickQ\\\\.openclaw\\\\workspace\\\\AGENTS.md\",\"rawChars\":24919,\"injectedChars\":18110,\"causes\":[\"per-file-limit\"]}]}",
+        "warningSignaturesSeen": [
+          "{\"bootstrapMaxChars\":20000,\"bootstrapTotalMaxChars\":150000,\"files\":[{\"path\":\"C:\\\\Users\\\\RickQ\\\\.openclaw\\\\workspace\\\\AGENTS.md\",\"rawChars\":24919,\"injectedChars\":18110,\"causes\":[\"per-file-limit\"]}]}"
+        ],
+        "truncatedFiles": 1,
+        "nearLimitFiles": 1,
+        "totalNearLimit": false
+      },
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 58272,
+        "projectContextChars": 36971,
+        "nonProjectContextChars": 21301
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\AGENTS.md",
+          "missing": false,
+          "rawChars": 24919,
+          "injectedChars": 18110,
+          "truncated": true
+        },
+        {
+          "name": "SOUL.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\SOUL.md",
+          "missing": false,
+          "rawChars": 1664,
+          "injectedChars": 1664,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\TOOLS.md",
+          "missing": false,
+          "rawChars": 1944,
+          "injectedChars": 1944,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\IDENTITY.md",
+          "missing": false,
+          "rawChars": 633,
+          "injectedChars": 633,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\USER.md",
+          "missing": false,
+          "rawChars": 474,
+          "injectedChars": 474,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 948,
+          "injectedChars": 948,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\BOOTSTRAP.md",
+          "missing": true,
+          "rawChars": 0,
+          "injectedChars": 70,
+          "truncated": false
+        },
+        {
+          "name": "MEMORY.md",
+          "path": "C:\\Users\\RickQ\\.openclaw\\workspace\\MEMORY.md",
+          "missing": false,
+          "rawChars": 12510,
+          "injectedChars": 12510,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 13836,
+        "entries": [
+          {
+            "name": "feishu-chat-file-delivery",
+            "blockChars": 571
+          },
+          {
+            "name": "feishu-file-bridge",
+            "blockChars": 448
+          },
+          {
+            "name": "smtp-mail",
+            "blockChars": 331
+          },
+          {
+            "name": "feishu-doc",
+            "blockChars": 283
+          },
+          {
+            "name": "feishu-drive",
+            "blockChars": 275
+          },
+          {
+            "name": "feishu-perm",
+            "blockChars": 297
+          },
+          {
+            "name": "feishu-wiki",
+            "blockChars": 277
+          },
+          {
+            "name": "prose",
+            "blockChars": 300
+          },
+          {
+            "name": "coding-agent",
+            "blockChars": 820
+          },
+          {
+            "name": "gemini",
+            "blockChars": 209
+          },
+          {
+            "name": "gh-issues",
+            "blockChars": 496
+          },
+          {
+            "name": "github",
+            "blockChars": 280
+          },
+          {
+            "name": "gog",
+            "blockChars": 214
+          },
+          {
+            "name": "healthcheck",
+            "blockChars": 479
+          },
+          {
+            "name": "mcporter",
+            "blockChars": 318
+          },
+          {
+            "name": "nano-pdf",
+            "blockChars": 216
+          },
+          {
+            "name": "node-connect",
+            "blockChars": 529
+          },
+          {
+            "name": "notion",
+            "blockChars": 210
+          },
+          {
+            "name": "obsidian",
+            "blockChars": 227
+          },
+          {
+            "name": "openai-whisper",
+            "blockChars": 215
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 470
+          },
+          {
+            "name": "summarize",
+            "blockChars": 233
+          },
+          {
+            "name": "weather",
+            "blockChars": 202
+          },
+          {
+            "name": "ai-automation-workflows",
+            "blockChars": 692
+          },
+          {
+            "name": "find-skills",
+            "blockChars": 475
+          },
+          {
+            "name": "self-improving-agent",
+            "blockChars": 406
+          },
+          {
+            "name": "skill-vetter",
+            "blockChars": 324
+          },
+          {
+            "name": "code-reviewer",
+            "blockChars": 624
+          },
+          {
+            "name": "context-compressor",
+            "blockChars": 622
+          },
+          {
+            "name": "knowledge-retrieval",
+            "blockChars": 619
+          },
+          {
+            "name": "task-planner",
+            "blockChars": 597
+          },
+          {
+            "name": "team-collaboration",
+            "blockChars": 635
+          },
+          {
+            "name": "vscode-automation",
+            "blockChars": 477
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 162,
+        "schemaChars": 4627,
+        "entries": [
+          {
+            "name": "read",
+            "summaryChars": 298,
+            "schemaChars": 574,
+            "propertiesCount": 6
+          },
+          {
+            "name": "edit",
+            "summaryChars": 511,
+            "schemaChars": 2470,
+            "propertiesCount": 13
+          },
+          {
+            "name": "write",
+            "summaryChars": 127,
+            "schemaChars": 497,
+            "propertiesCount": 5
+          },
+          {
+            "name": "exec",
+            "summaryChars": 181,
+            "schemaChars": 1086,
+            "propertiesCount": 12
+          }
+        ]
+      }
+    },
+    "cacheRead": 38656,
+    "cacheWrite": 0,
+    "totalTokensFresh": false,
+    "contextTokens": 1000000,
+    "endedAt": 1774866413941,
+    "runtimeMs": 6210
+  }
+}

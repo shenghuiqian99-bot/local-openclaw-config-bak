@@ -1,0 +1,38 @@
+# Sensitive files - MUST BE CONFIGURED MANUALLY AFTER RESTORE
+.env
+.env.*
+.env.minimax
+identity/device-auth.json
+
+# Session temp files (keep main sessions)
+*.tmp
+*.log
+*.jsonl.reset.*
+
+# Large generated files
+*.zip
+*.pdf
+*.gif
+*.png
+*.mp3
+*.dll
+*.node
+
+# Build artifacts
+node_modules/
+.next/
+dist/
+build/
+.cache/
+.git/objects/
+outbox/
+reports/
+archive/
+turbopack/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# SQLite temp files
+*.sqlite.tmp-*

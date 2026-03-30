@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "profiles": {
+    "moonshot:default": {
+      "type": "api_key",
+      "provider": "moonshot",
+      "keyRef": {
+        "source": "env",
+        "provider": "default",
+        "id": "OPENCLAW_REVIEW_MOONSHOT_API_KEY"
+      }
+    },
+    "dashscope:default": {
+      "type": "api_key",
+      "provider": "dashscope",
+      "keyRef": {
+        "source": "env",
+        "provider": "default",
+        "id": "OPENCLAW_REVIEW_DASHSCOPE_API_KEY"
+      }
+    }
+  },
+  "lastGood": {},
+  "usageStats": {}
+}

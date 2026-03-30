@@ -1,0 +1,563 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.24",
+    "lastTouchedAt": "2026-03-29T06:25:52.915Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-26T16:24:52.055Z",
+    "lastRunVersion": "2026.3.24",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": true,
+    "defaultProfile": "openclaw"
+  },
+  "ui": {
+    "assistant": {
+      "name": "CC",
+      "avatar": "https://raw.githubusercontent.com/openclaw/branding/main/assets/crayfish-avatar.png"
+    }
+  },
+  "secrets": {
+    "providers": {
+      "default": {
+        "source": "env"
+      }
+    },
+    "defaults": {
+      "env": "default"
+    },
+    "resolution": {
+      "maxProviderConcurrency": 4,
+      "maxRefsPerProvider": 64,
+      "maxBatchBytes": 65536
+    }
+  },
+  "auth": {
+    "profiles": {
+      "moonshot:default": {
+        "provider": "moonshot",
+        "mode": "api_key"
+      },
+      "minimax:default": {
+        "provider": "minimax",
+        "mode": "api_key"
+      },
+      "dashscope:default": {
+        "provider": "dashscope",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "moonshot": {
+        "baseUrl": "https://api.moonshot.cn/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-k2.5",
+            "name": "Kimi K2.5",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "minimax": {
+        "baseUrl": "https://api.minimax.chat/v1",
+        "apiKey": "${MINIMAX_API_KEY}",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "MiniMax-M2.7",
+            "name": "MiniMax M2.7",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "dashscope": {
+        "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "api": "openai-completions",
+        "models": []
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "minimax/MiniMax-M2.7",
+        "fallbacks": [
+          "moonshot/kimi-k2.5"
+        ]
+      },
+      "imageModel": {
+        "primary": "moonshot/kimi-k2.5",
+        "fallbacks": [
+          "minimax/MiniMax-M2.7"
+        ]
+      },
+      "models": {
+        "moonshot/kimi-k2.5": {
+          "alias": "k2.5"
+        },
+        "minimax/MiniMax-M2.7": {
+          "alias": "m2.7"
+        }
+      },
+      "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace",
+      "memorySearch": {
+        "enabled": false,
+        "sources": [
+          "memory"
+        ],
+        "extraPaths": [
+          "C:\\Users\\RickQ\\.openclaw\\workspace\\sessions",
+          "C:\\Users\\RickQ\\.openclaw\\workspace\\memory",
+          "C:\\Users\\RickQ\\.openclaw\\workspace\\memory\\auto-digests",
+          "C:\\Users\\RickQ\\.openclaw\\agents\\main\\sessions\\daily-reports",
+          "C:\\Users\\RickQ\\.openclaw\\workspace\\reports\\openclaw-conversation-summary.md",
+          "C:\\Users\\RickQ\\.openclaw\\workspace\\reports\\openclaw-session-history.pdf",
+          "E:\\projects\\clawbot\\OPENCLAW_SETUP_GUIDE.md",
+          "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\README.md",
+          "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_COMPARISON.md",
+          "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_FOUR_ROLE.md",
+          "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_THREE_ROLE.md",
+          "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_TEAM_COLLAB.md"
+        ],
+        "experimental": {
+          "sessionMemory": true
+        },
+        "provider": "openai",
+        "remote": {
+          "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+          "apiKey": "${OPENCLAW_SHARED_DASHSCOPE_API_KEY}"
+        },
+        "fallback": "none",
+        "model": "text-embedding-v3",
+        "sync": {
+          "watch": true
+        },
+        "query": {
+          "hybrid": {
+            "enabled": true,
+            "vectorWeight": 0.7,
+            "textWeight": 0.3,
+            "candidateMultiplier": 4,
+            "mmr": {
+              "enabled": true,
+              "lambda": 0.7
+            },
+            "temporalDecay": {
+              "enabled": true,
+              "halfLifeDays": 30
+            }
+          }
+        },
+        "cache": {
+          "enabled": true,
+          "maxEntries": 50000
+        }
+      },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "2h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 3,
+      "subagents": {
+        "maxConcurrent": 2,
+        "runTimeoutSeconds": 900
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "name": "Main Orchestrator",
+        "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace",
+        "agentDir": "C:\\Users\\RickQ\\.openclaw\\agents\\main\\agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7",
+          "fallbacks": [
+            "moonshot/kimi-k2.5"
+          ]
+        },
+        "memorySearch": {
+          "enabled": true,
+          "sources": [
+            "memory"
+          ],
+          "extraPaths": [
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\sessions",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\memory",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\memory\\auto-digests",
+            "C:\\Users\\RickQ\\.openclaw\\agents\\main\\sessions\\daily-reports",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\reports\\openclaw-conversation-summary.md",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\reports\\openclaw-session-history.pdf",
+            "E:\\projects\\clawbot\\OPENCLAW_SETUP_GUIDE.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\README.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_COMPARISON.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_FOUR_ROLE.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_THREE_ROLE.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_TEAM_COLLAB.md"
+          ],
+          "experimental": {
+            "sessionMemory": true
+          },
+          "provider": "openai",
+          "remote": {
+            "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+            "apiKey": "${OPENCLAW_SHARED_DASHSCOPE_API_KEY}"
+          },
+          "fallback": "none",
+          "model": "text-embedding-v3",
+          "sync": {
+            "onSessionStart": true,
+            "onSearch": true,
+            "watch": false
+          },
+          "query": {
+            "hybrid": {
+              "enabled": true,
+              "vectorWeight": 0.7,
+              "textWeight": 0.3,
+              "candidateMultiplier": 4,
+              "mmr": {
+                "enabled": true,
+                "lambda": 0.7
+              },
+              "temporalDecay": {
+                "enabled": true,
+                "halfLifeDays": 30
+              }
+            }
+          },
+          "cache": {
+            "enabled": true,
+            "maxEntries": 50000
+          }
+        },
+        "heartbeat": {
+          "every": "30m",
+          "prompt": "读取工作区 HEARTBEAT.md 并严格执行其中的轻量巡检清单。若全部正常，回复 NO_REPLY；若发现异常，只汇报新增问题、影响和一次安全恢复动作结果。"
+        },
+        "identity": {
+          "name": "CC",
+          "emoji": "🦞",
+          "avatar": "https://raw.githubusercontent.com/openclaw/branding/main/assets/crayfish-avatar.png"
+        },
+        "subagents": {
+          "allowAgents": [
+            "research",
+            "implement",
+            "review",
+            "docs"
+          ]
+        },
+        "tools": {
+          "profile": "full"
+        }
+      },
+      {
+        "id": "research",
+        "name": "Research Agent",
+        "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace-research",
+        "agentDir": "C:\\Users\\RickQ\\.openclaw\\agents\\research\\agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7",
+          "fallbacks": [
+            "moonshot/kimi-k2.5"
+          ]
+        },
+        "memorySearch": {
+          "enabled": true,
+          "sources": [
+            "memory"
+          ],
+          "extraPaths": [
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\sessions",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\memory",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\memory\\auto-digests",
+            "C:\\Users\\RickQ\\.openclaw\\agents\\main\\sessions\\daily-reports",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\reports\\openclaw-conversation-summary.md",
+            "C:\\Users\\RickQ\\.openclaw\\workspace\\reports\\openclaw-session-history.pdf",
+            "E:\\projects\\clawbot\\OPENCLAW_SETUP_GUIDE.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\README.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_COMPARISON.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_FOUR_ROLE.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_THREE_ROLE.md",
+            "E:\\projects\\clawbot\\docs\\openclaw-multi-agent\\OPENCLAW_MULTI_AGENT_TEAM_COLLAB.md"
+          ],
+          "experimental": {
+            "sessionMemory": true
+          },
+          "provider": "openai",
+          "remote": {
+            "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+            "apiKey": "${OPENCLAW_SHARED_DASHSCOPE_API_KEY}"
+          },
+          "fallback": "none",
+          "model": "text-embedding-v3",
+          "sync": {
+            "onSessionStart": false,
+            "onSearch": true,
+            "watch": false
+          },
+          "query": {
+            "hybrid": {
+              "enabled": true,
+              "vectorWeight": 0.7,
+              "textWeight": 0.3,
+              "candidateMultiplier": 4,
+              "mmr": {
+                "enabled": true,
+                "lambda": 0.7
+              },
+              "temporalDecay": {
+                "enabled": true,
+                "halfLifeDays": 30
+              }
+            }
+          },
+          "cache": {
+            "enabled": true,
+            "maxEntries": 50000
+          }
+        },
+        "tools": {
+          "profile": "coding",
+          "deny": [
+            "write",
+            "edit",
+            "apply_patch"
+          ]
+        }
+      },
+      {
+        "id": "implement",
+        "name": "Implement Agent",
+        "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace-implement",
+        "agentDir": "C:\\Users\\RickQ\\.openclaw\\agents\\implement\\agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7",
+          "fallbacks": [
+            "moonshot/kimi-k2.5"
+          ]
+        },
+        "tools": {
+          "profile": "coding"
+        }
+      },
+      {
+        "id": "review",
+        "name": "Review Agent",
+        "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace-review",
+        "agentDir": "C:\\Users\\RickQ\\.openclaw\\agents\\review\\agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7",
+          "fallbacks": [
+            "moonshot/kimi-k2.5"
+          ]
+        },
+        "tools": {
+          "profile": "coding",
+          "deny": [
+            "write",
+            "edit",
+            "apply_patch",
+            "group:runtime"
+          ]
+        }
+      },
+      {
+        "id": "docs",
+        "name": "Docs Agent",
+        "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace-docs",
+        "agentDir": "C:\\Users\\RickQ\\.openclaw\\agents\\docs\\agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7",
+          "fallbacks": [
+            "moonshot/kimi-k2.5"
+          ]
+        },
+        "tools": {
+          "profile": "coding",
+          "deny": [
+            "exec",
+            "group:runtime"
+          ]
+        }
+      },
+      {
+        "id": "logger",
+        "name": "Conversation Logger",
+        "workspace": "C:\\Users\\RickQ\\.openclaw\\workspace",
+        "agentDir": "C:\\Users\\RickQ\\.openclaw\\agents\\logger\\agent",
+        "model": {
+          "primary": "minimax/MiniMax-M2.7",
+          "fallbacks": [
+            "moonshot/kimi-k2.5"
+          ]
+        },
+        "heartbeat": {
+          "every": "2h",
+          "prompt": "检查并同步所有会话记录，生成每日摘要，归档过期文件"
+        },
+        "identity": {
+          "name": "Logger",
+          "emoji": "📝",
+          "avatar": "https://raw.githubusercontent.com/openclaw/branding/main/assets/logger-avatar.png"
+        },
+        "tools": {
+          "profile": "coding",
+          "allow": [
+            "read",
+            "write",
+            "edit",
+            "exec"
+          ]
+        }
+      }
+    ]
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "kimi"
+      }
+    },
+    "media": {
+      "image": {
+        "enabled": true,
+        "maxBytes": 10485760,
+        "maxChars": 800,
+        "timeoutSeconds": 90,
+        "models": [
+          {
+            "provider": "minimax",
+            "model": "MiniMax-M2.7",
+            "capabilities": [
+              "image"
+            ]
+          },
+          {
+            "provider": "moonshot",
+            "model": "kimi-k2.5",
+            "capabilities": [
+              "image"
+            ]
+          }
+        ]
+      }
+    },
+    "sessions": {
+      "visibility": "tree"
+    },
+    "agentToAgent": {
+      "enabled": true,
+      "allow": [
+        "research",
+        "implement",
+        "review",
+        "docs",
+        "logger"
+      ]
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "feishu",
+        "accountId": "default"
+      }
+    }
+  ],
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "idleMinutes": 240
+  },
+  "channels": {
+    "feishu": {
+      "appId": "cli_a9268c4291f8dcc0",
+      "appSecret": "${OPENCLAW_FEISHU_APP_SECRET}",
+      "encryptKey": "",
+      "dmPolicy": "pairing",
+      "groupPolicy": "open",
+      "dmHistoryLimit": 50,
+      "historyLimit": 20,
+      "mediaMaxMb": 25
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "skills": {
+    "load": {
+      "extraDirs": [
+        "E:\\projects\\clawbot\\skills"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "googlechat": {
+        "enabled": false
+      },
+      "llm-task": {
+        "enabled": true,
+        "config": {
+          "defaultProvider": "minimax"
+        }
+      },
+      "open-prose": {
+        "enabled": true
+      },
+      "feishu": {
+        "enabled": true
+      }
+    }
+  }
+}
